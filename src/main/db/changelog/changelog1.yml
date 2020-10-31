@@ -1,0 +1,92 @@
+databaseChangeLog:  
+
+
+  -  changeSet:  
+      id:  1  
+      author:  Souvik
+      changes:  
+        -  createTable:  
+            tableName:  course 
+            columns:  
+              -  column:  
+                  name:  id  
+                  type:  int  
+                  autoIncrement:  true  
+                  constraints:  
+                    primaryKey:  true  
+                    nullable:  false  
+              -  column:  
+                  name:  title
+                  type:  varchar(50)  
+              -  column:  
+                  name:  subject  
+                  type:  varchar(50)  
+                  constraints:  
+                    nullable:  false  
+              -  column:  
+                  name:  price 
+                  type:  int  
+
+  -  changeSet:  
+      id:  2  
+      author:  souvik  
+      changes:  
+        -  addColumn:  
+            tableName:  course  
+            columns:  
+              -  column:  
+                  name:  course_code  
+                  type:  varchar(8)  
+                  
+              -  column:  
+                  name:  mentor 
+                  type:  varchar(20) 
+
+ 
+           
+           
+  -  changeSet:  
+      id:  10  
+      author:  Souvik
+      changes:  
+        -  createTable:  
+            tableName:  mentor
+            columns:  
+              -  column:  
+                  name:  id  
+                  type:  int  
+                  autoIncrement:  true  
+                  constraints:  
+                    primaryKey:  true  
+                    nullable:  false  
+              -  column:  
+                  name:  name
+                  type:  varchar(50)  
+              -  column:  
+                  name:  subject  
+                  type:  varchar(50)  
+                  constraints:  
+                    nullable:  false  
+              -  column:  
+                  name:  Al  
+                  type:  varchar(50)  
+                  constraints:  
+                    nullable:  false  
+              -  column:  
+                  name:  degree
+                  type:  int  
+              -   column:
+                   name: course_id
+                   type: int
+                   constraints:
+                    nullable: false
+                    foreignKeyName: fk_questions_author
+                    references: course(id)  
+            
+            
+  
+            
+            
+            
+            
+   

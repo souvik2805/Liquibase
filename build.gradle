@@ -1,0 +1,34 @@
+apply plugin: 'liquibase'
+
+buildscript {
+    repositories {
+        mavenCentral()
+    }
+    
+    dependencies {
+    classpath 'org.liquibase:liquibase-core:3.4.1'
+    classpath "org.liquibase:liquibase-gradle-plugin:1.1.1"
+	classpath  group: 'org.postgresql', name: 'postgresql', version: '42.1.4'
+	// https://mvnrepository.com/artifact/org.yaml/snakeyaml
+    classpath  group: 'org.yaml', name: 'snakeyaml', version: '1.23'
+    }
+}
+
+def changeLog = "src/main/db/master.yml"
+
+task('dev') {
+	println "executing dev"
+
+	liquibase {
+	    activities {
+	        main {
+	            changeLogFile changeLog
+	            url 'jdbc:postgresql://localhost:5432/hbstudent'
+	            username 'postgres'
+	            password 'password'
+	            outputFile 'src/main/db/script.sql'
+	        }
+	    }
+	}    
+}
+
